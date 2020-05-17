@@ -30,7 +30,6 @@ function reformatDate(dateStr) {
 }
 function getRepetitionCountry(data) {
 	let propertyCount = Array.from(new Set(data.flatMap((p) => p.country)));
-	console.log(propertyCount);
 	let bla = propertyCount.map(
 		(count, i) =>
 			(count = data.reduce(function(n, person) {
@@ -42,7 +41,6 @@ function getRepetitionCountry(data) {
 
 function getProfilePictureData(data) {
 	const withProfile = Object.keys(data.filter((p) => p.profile != null && p.profile !== '')).length;
-	console.log(data.filter((p) => p.profile != null || p.profile === ''));
 	const noProfile = getNumberOfUsers(data) - withProfile;
 	return [ withProfile, noProfile ];
 }
@@ -211,7 +209,6 @@ const LineChart = (props) => {
 			dataLabels: {
 				enabled: true,
 				formatter: function(val, opts) {
-					console.log(val, opts);
 					// var label = opts.w.globals.labels[opts.dataPointIndex]
 					let a = moment(val[0]);
 					let b = moment(val[1]);

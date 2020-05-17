@@ -15,9 +15,7 @@ const SingleuserAdd = (props) => {
         setFormData(param => ({ ...param, name: value }))
     };
     const handleAddressChange = newUrl => {
-        if (newUrl === "" || (/\.(gif|jpe?g|tiff|png|webp|bmp)$/i).test(newUrl)) {
             setFormData(param => ({ ...param, profile: newUrl }))
-        }
     }
     const addButtonActive={ width: 148,background:"#1989f1",borderColor:"#1989f1",color:"white"}
     const addButtonDisabled={ width: 148,background:"#ccc",borderColor:"#ccc",color:"white"}

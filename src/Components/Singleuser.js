@@ -15,9 +15,7 @@ const Singleuser = (props) => {
         setFormData(param => ({ ...param, name: value }))
     };
     const handleAddressChange = newUrl => {
-        if (newUrl === "" || (/\.(gif|jpe?g|tiff|png|webp|bmp)$/i).test(newUrl)) {
             setFormData(param => ({ ...param, profile: newUrl }))
-        }
     }
     return (
         <div className="single-user-container" onMouseLeave={() => setButtonPressed(param => ({ ...param, remove: false }))}>
@@ -27,7 +25,7 @@ const Singleuser = (props) => {
                         <Avatar src={formData.profile} onClick={() => setShowUrl(showUrl ? false : true)} className="cursor-pointer" />
                     </Form.Item>
                     <Form.Item style={{ marginLeft: defaultSpace }} className={showUrl ? "" : "hide"} >
-                        <Input className="force-align-center" disabled={!buttonPressed.edit} style={{ width: 283 }} onChange={e => handleAddressChange(e.target.value)} value={formData.profile} placeholder="image url" suffix={<FileImageOutlined />} />
+                        <Input className="force-align-center" disabled={!buttonPressed.edit} style={{ width: 283 }} onChange={e => handleAddressChange(e.target.value)} defaultValue={formData.profile} placeholder="image url" suffix={<FileImageOutlined />} />
                     </Form.Item>
                     <div className="username-country-container">
                         <Form.Item style={{ marginLeft: defaultSpace }} className={showUrl ? "hide" : ""}>
