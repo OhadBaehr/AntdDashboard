@@ -11,11 +11,15 @@ const SingleuserAdd = (props) => {
     const {addUser } = useContext(DefaultUserData)
     const [formData, setFormData] = useState( props )
     const [showUrl, setShowUrl] = useState(false)
+    const [avatarUrl,changeAvatarUrl]=useState(props.profile)
     const handleInput = value => {
         setFormData(param => ({ ...param, name: value }))
     };
     const handleAddressChange = newUrl => {
-            setFormData(param => ({ ...param, profile: newUrl }))
+        setFormData(param => ({ ...param, profile: newUrl }))
+        if (newUrl === "" || /\b.jpg|\b.png|\b.jpeg/.test(newUrl)) {
+            changeAvatarUrl(newUrl)
+        }
     }
     const addButtonActive={ width: 148,background:"#1989f1",borderColor:"#1989f1",color:"white"}
     const addButtonDisabled={ width: 148,background:"#ccc",borderColor:"#ccc",color:"white"}
@@ -24,7 +28,7 @@ const SingleuserAdd = (props) => {
             <Row justify="center" align="top">
                 <Form labelCol={{ span: defaultSpace }} wrapperCol={{ span: defaultSpace }} className="user-flex-container">
                     <Form.Item style={{ marginLeft: defaultSpace }}>
-                        <Avatar src={formData.profile} onClick={() => setShowUrl(showUrl ? false : true)} className="cursor-pointer" icon={showUrl ? <ArrowLeftOutlined /> : <FileImageOutlined />} />
+                        <Avatar src={avatarUrl} onClick={() => setShowUrl(showUrl ? false : true)} className="cursor-pointer" icon={showUrl ? <ArrowLeftOutlined /> : <FileImageOutlined />} />
                     </Form.Item>
                     <Form.Item style={{ marginLeft: defaultSpace }} className={showUrl ? "" : "hide"} >
                         <Input className="force-align-center" style={{ width: 283 }} onChange={e => handleAddressChange(e.target.value)} value={formData.profile} placeholder="image url" suffix={<FileImageOutlined />} />

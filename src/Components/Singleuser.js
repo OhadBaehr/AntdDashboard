@@ -11,18 +11,22 @@ const Singleuser = (props) => {
     const [formData, setFormData] = useState( props )
     const [showUrl, setShowUrl] = useState(false)
     const [buttonPressed, setButtonPressed] = useState({ remove: false, edit: false })
+    const [avatarUrl,changeAvatarUrl]=useState(props.profile)
     const handleInput = value => {
         setFormData(param => ({ ...param, name: value }))
     };
     const handleAddressChange = newUrl => {
-            setFormData(param => ({ ...param, profile: newUrl }))
+        setFormData(param => ({ ...param, profile: newUrl }))
+        if (newUrl === "" || /\b.jpg|\b.png|\b.jpeg/.test(newUrl)) {
+            changeAvatarUrl(newUrl)
+        }
     }
     return (
         <div className="single-user-container" onMouseLeave={() => setButtonPressed(param => ({ ...param, remove: false }))}>
             <Row justify="center" align="top">
                 <Form labelCol={{ span: defaultSpace }} wrapperCol={{ span: defaultSpace }} className="user-flex-container">
                     <Form.Item style={{ marginLeft: defaultSpace }} >
-                        <Avatar src={formData.profile} onClick={() => setShowUrl(showUrl ? false : true)} className="cursor-pointer" />
+                        <Avatar src={avatarUrl} onClick={() => setShowUrl(showUrl ? false : true)} className="cursor-pointer" />
                     </Form.Item>
                     <Form.Item style={{ marginLeft: defaultSpace }} className={showUrl ? "" : "hide"} >
                         <Input className="force-align-center" disabled={!buttonPressed.edit} style={{ width: 283 }} onChange={e => handleAddressChange(e.target.value)} defaultValue={formData.profile} placeholder="image url" suffix={<FileImageOutlined />} />
@@ -55,6 +59,7 @@ const Singleuser = (props) => {
                             <Button shape="round" type="danger" style={{ width: 70 }} icon={buttonPressed.edit ? <UndoOutlined /> : (buttonPressed.remove ? <CloseOutlined /> : <></>)} onClick={() => {
                                 if (buttonPressed.edit) {
                                     setFormData(props)
+                                    changeAvatarUrl(props.profile)
                                     setButtonPressed(({ edit: false, remove: false }))
                                 } else if (buttonPressed.remove) {
                                     removeUser(props.id)
