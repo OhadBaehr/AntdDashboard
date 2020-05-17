@@ -29,7 +29,7 @@ const Singleuser = (props) => {
                         <Avatar src={avatarUrl} onClick={() => setShowUrl(showUrl ? false : true)} className="cursor-pointer" />
                     </Form.Item>
                     <Form.Item style={{ marginLeft: defaultSpace }} className={showUrl ? "" : "hide"} >
-                        <Input className="force-align-center" disabled={!buttonPressed.edit} style={{ width: 283 }} onChange={e => handleAddressChange(e.target.value)} defaultValue={formData.profile} placeholder="image url" suffix={<FileImageOutlined />} />
+                        <Input className="force-align-center" disabled={!buttonPressed.edit} style={{ width: 283 }} onChange={e => handleAddressChange(e.target.value)} value={formData.profile} placeholder="image url" suffix={<FileImageOutlined />} />
                     </Form.Item>
                     <div className="username-country-container">
                         <Form.Item style={{ marginLeft: defaultSpace }} className={showUrl ? "hide" : ""}>
