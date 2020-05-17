@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import ColumnChart, { PieChartBirthYear, UserCounter, LineChart, PieChartProfiles } from './Charts'
-import DefaultUserData, { userData } from '../Store'
+import DefaultUserData from '../Store'
 import { FrownOutlined } from '@ant-design/icons';
 import './Statistics.less'
 import { Typography } from 'antd';

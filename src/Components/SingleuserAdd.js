@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
-import { Form, Select, Row, Input, DatePicker, Avatar, Button, Typography } from 'antd';
-import { UserOutlined, FileImageOutlined, PlusOutlined, ArrowLeftOutlined } from '@ant-design/icons';
+import { Form,  Row, Input, DatePicker, Avatar, Button } from 'antd';
+import { UserOutlined, FileImageOutlined, ArrowLeftOutlined } from '@ant-design/icons';
 import CountrySelect from './CountrySelect'
 import DefaultUserData from '../Store'
 import moment from 'moment';
@@ -8,7 +8,7 @@ import './SingleuserAdd.less';
 import '../globalStyles.less'
 const defaultSpace = 8;
 const SingleuserAdd = (props) => {
-    const { data,addUser } = useContext(DefaultUserData)
+    const {addUser } = useContext(DefaultUserData)
     const [formData, setFormData] = useState( props )
     const [showUrl, setShowUrl] = useState(false)
     const handleInput = value => {

@@ -1,4 +1,4 @@
-import React,{useContext, useEffect} from 'react'
+import React,{useContext} from 'react'
 import SingleUser from './Singleuser'
 import DefaultUserData from '../Store'
 import SingleUserAdd from './SingleuserAdd'

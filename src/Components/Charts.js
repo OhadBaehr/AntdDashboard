@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import Chart, { generateData } from 'react-apexcharts';
+import React from 'react';
+import Chart from 'react-apexcharts';
 import './Charts.less';
 import { Typography } from 'antd';
 import moment from 'moment';
@@ -41,7 +41,7 @@ function getRepetitionCountry(data) {
 }
 
 function getProfilePictureData(data) {
-	const withProfile = Object.keys(data.filter((p) => p.profile != null && p.profile != '')).length;
+	const withProfile = Object.keys(data.filter((p) => p.profile != null && p.profile !== '')).length;
 	console.log(data.filter((p) => p.profile != null || p.profile === ''));
 	const noProfile = getNumberOfUsers(data) - withProfile;
 	return [ withProfile, noProfile ];
@@ -173,12 +173,6 @@ const PieChartBirthYear = (props) => {
 };
 
 const LineChart = (props) => {
-	let usersNames = props.data.flatMap((p) => p.name);
-	let birthdays = props.data.flatMap((p) => {
-		console.log(reformatDate(p.birthday));
-		return p.birthday;
-	});
-	console.log(birthdays);
 	const chartData = {
 		series: [
 			{

@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
-import DefaultUserData, { userData } from '../Store'
+import DefaultUserData from '../Store'
 import './Statistics.less'
 import { Typography } from 'antd';
 import { FrownOutlined } from '@ant-design/icons'
-import ColumnChart, { PieChartBirthYear, UserCounter, PieChartProfiles } from './Charts'
+import ColumnChart, { PieChartBirthYear, UserCounter} from './Charts'
 const { Title } = Typography;
 
 const MiniStatistics = (props) => {
