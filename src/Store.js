@@ -19,7 +19,7 @@ export const userData = [{
   id: 3
 }, {
   name: "bob",
-  birthday: "11-4-1945",
+  birthday: "11-4-1980",
   country: "France",
   profile: "https://i.pinimg.com/originals/4e/65/fe/4e65fe00b5ea08dde82d6c48c9c55fa4.jpg",
   id: 4

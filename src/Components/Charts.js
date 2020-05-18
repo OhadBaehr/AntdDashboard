@@ -13,14 +13,14 @@ function getRepetitionBirthday(data) {
 	let birthdays = Array.from(new Set(data.flatMap((p) => p.birthday.split('-').splice(-1)))).sort();
 	let bla = birthdays.map(
 		(count, i) =>
-			(count = data.reduce(function(n, person) {
+			(count = data.reduce(function (n, person) {
 				return n + (person.birthday.split('-').splice(-1)[0] === birthdays[i]);
 			}, 0))
 	);
 	return bla;
 }
 function generateFillColor(indx) {
-	let colors = [ '#F44336', '#008ffb', '#feb019', '#E91E63', '#ff4560', '#9C27B0', '#00e396' ];
+	let colors = ['#F44336', '#008ffb', '#feb019', '#E91E63', '#ff4560', '#9C27B0', '#00e396'];
 	let index = indx % colors.length;
 	return colors[index];
 }
@@ -32,7 +32,7 @@ function getRepetitionCountry(data) {
 	let propertyCount = Array.from(new Set(data.flatMap((p) => p.country)));
 	let bla = propertyCount.map(
 		(count, i) =>
-			(count = data.reduce(function(n, person) {
+			(count = data.reduce(function (n, person) {
 				return n + (person.country === propertyCount[i]);
 			}, 0))
 	);
@@ -42,7 +42,7 @@ function getRepetitionCountry(data) {
 function getProfilePictureData(data) {
 	const withProfile = Object.keys(data.filter((p) => p.profile != null && p.profile !== '')).length;
 	const noProfile = getNumberOfUsers(data) - withProfile;
-	return [ withProfile, noProfile ];
+	return [withProfile, noProfile];
 }
 
 const ColumnChart = (props) => {
@@ -57,7 +57,7 @@ const ColumnChart = (props) => {
 				height: 350,
 				type: 'bar'
 			},
-			colors: [ '#F44336', '#008ffb', '#feb019', '#E91E63', '#ff4560', '#9C27B0', '#00e396' ],
+			colors: ['#F44336', '#008ffb', '#feb019', '#E91E63', '#ff4560', '#9C27B0', '#00e396'],
 			plotOptions: {
 				bar: {
 					distributed: true,
@@ -74,8 +74,8 @@ const ColumnChart = (props) => {
 					fontFamily:
 						"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'"
 				}
-			},yaxis:{
-				show:false,
+			}, yaxis: {
+				show: false,
 			},
 			dataLabels: {
 				enabled: true
@@ -178,10 +178,11 @@ const LineChart = (props) => {
 			{
 				data: props.data.flatMap((p, idx) => ({
 					x: p.name,
-					y: [ new Date(reformatDate(p.birthday)).getTime(), new Date().getTime() ],
+					y: [new Date(reformatDate(p.birthday)).getTime(), new Date().getTime()],
 					fillColor: generateFillColor(idx)
 				}))
-			}
+				,
+			},
 		],
 		options: {
 			chart: {
@@ -210,7 +211,7 @@ const LineChart = (props) => {
 			},
 			dataLabels: {
 				enabled: true,
-				formatter: function(val, opts) {
+				formatter: function (val, opts) {
 					// var label = opts.w.globals.labels[opts.dataPointIndex]
 					let a = moment(val[0]);
 					let b = moment(val[1]);
@@ -218,8 +219,11 @@ const LineChart = (props) => {
 					return diff + (diff > 1 ? ' years' : ' years');
 				},
 				style: {
-					colors: [ '#f3f4f5', '#fff' ]
+					colors: ['#f3f4f5', '#fff']
 				}
+			},
+			yaxis:{
+				max: new Date().getTime(),
 			},
 			xaxis: {
 				type: 'datetime'
@@ -230,9 +234,7 @@ const LineChart = (props) => {
 		}
 	};
 	return (
-		<div id="chart">
-			<Chart options={chartData.options} series={chartData.series} type="rangeBar" height={350} />
-		</div>
+		<Chart options={chartData.options} series={chartData.series} type="rangeBar" height={350} />
 	);
 };
 
@@ -240,11 +242,11 @@ const PieChartProfiles = (props) => {
 	const chartData = {
 		series: getProfilePictureData(Object.values(props.data)),
 		options: {
-			labels: [ 'With profile picture', 'Without profile picture' ],
+			labels: ['With profile picture', 'Without profile picture'],
 			chart: {
 				type: 'donut'
 			},
-			colors: [ '#9C27B0', '#F44336' ],
+			colors: ['#9C27B0', '#F44336'],
 			legend: {
 				position: 'bottom'
 			},

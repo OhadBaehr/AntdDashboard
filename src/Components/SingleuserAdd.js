@@ -42,7 +42,7 @@ const SingleuserAdd = (props) => {
                         </Form.Item>
                     </div>
                     <Form.Item style={{ marginLeft: defaultSpace }} >
-                        <DatePicker placeholder="Date" className="force-align-center" style={{ width: 120 }} onChange={(value) => setFormData(param => ({ ...param, birthday: value }))} 
+                        <DatePicker placeholder="Date" className="force-align-center" style={{ width: 120 }} defaultPickerValue={formData.birthday ? moment(formData.birthday, 'DD-MM-YYYY') :moment('1-1-2000', 'DD-MM-YYYY')} onChange={(value) => setFormData(param => ({ ...param, birthday: value }))} 
                         value={formData.birthday ? moment(formData.birthday, 'DD-MM-YYYY') : ""} format={'D/M/YYYY'} />
                     </Form.Item>
                     <div className="user-buttons-container">

@@ -40,7 +40,8 @@ const Singleuser = (props) => {
                         </Form.Item>
                     </div>
                     <Form.Item style={{ marginLeft: defaultSpace }} >
-                        <DatePicker className="force-align-center" disabled={!buttonPressed.edit}  style={{ width: 120 }} onChange={(value) => setFormData(param => ({ ...param, birthday: value }))} value={formData.birthday ? moment(formData.birthday, 'DD-MM-YYYY') : ""} format={'D/M/YYYY'} />
+                        <DatePicker className="force-align-center" disabled={!buttonPressed.edit} defaultPickerValue={formData.birthday ? moment(formData.birthday, 'DD-MM-YYYY') :moment('1-1-2000', 'DD-MM-YYYY')}
+                         style={{ width: 120 }} onChange={(value) => setFormData(param => ({ ...param, birthday: value }))} value={formData.birthday ? moment(formData.birthday, 'DD-MM-YYYY') : ""} format={'D/M/YYYY'} />
                     </Form.Item>
                     <div className="user-buttons-container">
                         <Form.Item style={{ marginLeft: defaultSpace }}>
