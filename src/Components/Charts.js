@@ -74,6 +74,8 @@ const ColumnChart = (props) => {
 					fontFamily:
 						"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'"
 				}
+			},yaxis:{
+				show:false,
 			},
 			dataLabels: {
 				enabled: true
@@ -82,8 +84,8 @@ const ColumnChart = (props) => {
 				show: false
 			},
 			xaxis: {
-				categories: Array.from(new Set(Object.values(props.data)))
-					.flatMap((p) => p.birthday.split('-').splice(-1))
+				categories: Array.from(new Set(Object.values(props.data)
+					.flatMap((p) => p.birthday.split('-').splice(-1))))
 					.sort(),
 				labels: {
 					style: {
