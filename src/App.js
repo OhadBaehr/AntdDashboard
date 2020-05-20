@@ -4,7 +4,7 @@ import DefaultUserData, { userData } from './Store'
 import Navigation from './Components/Navigation'
 import {
   BrowserRouter as Router,
-  Route,Redirect
+  Route,Switch
 } from 'react-router-dom';
 import * as ROUTES from './Routes'
 import UsersOverview from './Components/Users'
@@ -31,7 +31,6 @@ const App = () => {
   }, [])
   return (
     <Router>
-      <Redirect to='/' />
       <DefaultUserData.Provider value={{
         data,
         addUser,removeUser,editUser
@@ -48,9 +47,11 @@ const App = () => {
         </section>
         <section className="app-background">
           <Navigation />
+          <Switch>
           <Route exact path={ROUTES.HOME} component={Homepage} />
           <Route exact path={ROUTES.STATISTICS} component={Statistics} />
           <Route path={ROUTES.USERDETAILS} component={UsersOverview} />
+          </Switch>
         </section>
         <section className="app-footer">
         </section>
