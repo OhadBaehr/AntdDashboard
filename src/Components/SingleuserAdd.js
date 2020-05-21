@@ -49,8 +49,8 @@ const SingleuserAdd = (props) => {
                         <Form.Item style={{ marginLeft: defaultSpace }}>
                             <Button disabled={formData.country && formData.name && formData.birthday ? false : true} shape="round" htmlType="submit" style={formData.country && formData.name && formData.birthday ? addButtonActive : addButtonDisabled}
                                onClick={() => {
-                                   let newData=formData
-                                   newData.birthday=`${newData.birthday.days()}-${newData.birthday.months()}-${newData.birthday.years()}`
+                                    const newData=formData
+                                    newData.birthday=`${newData.birthday.days()}-${newData.birthday.months()+1}-${newData.birthday.years()}`
                                     addUser(newData)
                                     setFormData({})
                                 }
